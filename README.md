@@ -1,19 +1,10 @@
-# ex-organizer
+<h1>ExF-TS Template</h1>
 
-## Project setup
-```
-yarn install
-```
+<p>Just clone repository and run: </p>
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+```javascript
+    yarn install
+    yarn start
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<p>This will create webpack server, after this write what you want in src folder</p>

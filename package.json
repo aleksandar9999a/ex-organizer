@@ -1,28 +1,27 @@
 {
-  "name": "ex-organizer",
-  "version": "0.1.0",
-  "private": true,
+  "name": "template2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "bundle": "webpack",
+    "start": "webpack-dev-server --mode development --hot",
+    "build": "webpack --mode production"
   },
   "dependencies": {
+    "@webcomponents/custom-elements": "^1.4.2",
+    "@webcomponents/shadydom": "^1.7.4",
     "core-js": "^3.6.5",
-    "register-service-worker": "^1.7.1",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-pwa": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "typescript": "~3.9.3"
+    "css-loader": "^4.3.0",
+    "exf-router": "^1.0.5",
+    "exf-ts": "^1.3.7",
+    "html-webpack-plugin": "^4.4.1",
+    "reflect-metadata": "^0.1.13",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
