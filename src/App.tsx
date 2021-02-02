@@ -8,7 +8,7 @@ export class App extends Component {
 	render() {
 		return (
 			<div>
-				<h1>ExF</h1>
+				<exf-header />
 			</div>
 		)
 	}
