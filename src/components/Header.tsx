@@ -1,22 +1,42 @@
 import ExF, { Component, CustomElement } from 'exf-ts';
+import { NavbarStyles } from '../styles/NavbarStyles';
 
 
 @CustomElement({
-	selector: 'exf-header'
+  selector: 'exf-header',
+  dependencyInjection: true
 })
 export class Header extends Component {
+  constructor (private navbarStyles: NavbarStyles) {
+    super();
+  }
+
+  stylize () {
+    return (
+      <styles>
+        <style>
+          .navbar {
+            { ...this.navbarStyles.style }
+          }
+        </style>
+      </styles>
+    )
+  }
+
 	render() {
 		return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <ul className="navbar-nav d-flex justify-content-between w-100">
-          <li className="nav-item">
-            <a className="nav-link active" href="#">
-              Menu
+      <nav className="navbar">
+        <ul>
+          <li>
+            <a className="navbar__menu" href="#">
+              <div></div>
+              <div></div>
+              <div></div>
             </a>
           </li>
 
-          <li className="nav-item">
-            <a className="nav-link" href="#">
+          <li>
+            <a href="#">
               Log Out
             </a>
           </li>
