@@ -1,5 +1,5 @@
 import ExF, { Component, CustomElement } from 'exf-ts';
-import { NavbarStyles } from '../styles/NavbarStyles';
+import { openClose, SidebarController } from '../controllers/SidebarCotroller';
 
 
 @CustomElement({
@@ -7,8 +7,12 @@ import { NavbarStyles } from '../styles/NavbarStyles';
   dependencyInjection: true
 })
 export class Header extends Component {
-  constructor (private navbarStyles: NavbarStyles) {
+  constructor (private sidebarController: SidebarController) {
     super();
+  }
+
+  openClose = () => {
+    openClose()
   }
 
   stylize () {
@@ -16,7 +20,43 @@ export class Header extends Component {
       <styles>
         <style>
           .navbar {
-            { ...this.navbarStyles.style }
+            {
+              background: '#00c292',
+          
+              ul: {
+                display: 'flex',
+                width: '100%',
+                'justify-content': 'space-between',
+                'list-style': 'none',
+                padding: '0',
+          
+                a: {
+                  color: '#fff',
+                  'text-decoration': 'none'
+                },
+          
+                li: {
+                  padding: '1rem',
+                  transition: 'background .2s'
+                },
+          
+                'li:hover': {
+                  background: 'rgba(0,0,0,.1)'
+                }
+              },
+
+              '.navbar__menu': {
+                background: 'transparent',
+                cursor: 'pointer',
+                
+                'div': {
+                  width: '15px',
+                  height: '1px',
+                  'background-color': '#fff',
+                  margin: '4px 0',
+                }
+              }
+            }
           }
         </style>
       </styles>
@@ -28,11 +68,14 @@ export class Header extends Component {
       <nav className="navbar">
         <ul>
           <li>
-            <a className="navbar__menu" href="#">
+            <button
+              className="navbar__menu"
+              onClick={this.openClose}
+            >
               <div></div>
               <div></div>
               <div></div>
-            </a>
+            </button>
           </li>
 
           <li>

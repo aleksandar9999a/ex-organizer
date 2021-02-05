@@ -4,11 +4,48 @@ import ExF, { Component, CustomElement } from 'exf-ts';
 	selector: 'exf-app'
 })
 export class App extends Component {
+	stylize () {
+		return (
+			<style>
+				.app {
+					{
+						'.app__inner': {
+							display: 'flex',
+							'min-height': '100vh',
+						},
+
+						'.app__content': {
+							width: '100%'
+						},
+
+						'.app__container': {
+							'min-height': '100%',
+							background: '#eceef9'
+						}
+					}
+				}
+			</style>
+		)
+	}
 
 	render() {
 		return (
-			<div>
-				<exf-header />
+			<div className="app">
+				<div className="app__inner">
+					<div>
+						<exf-sidebar />
+					</div>
+
+					<div className="app__content">
+						<exf-header />
+
+						<div className="app__container">
+							Template
+						</div>
+					</div>
+				</div>
+
+				<exf-footer />
 			</div>
 		)
 	}
