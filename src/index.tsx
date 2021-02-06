@@ -23,6 +23,9 @@ import { TaskDetails } from './components/TaskDetails';
 import { Team } from './components/Team';
 import { Profile } from './components/Profile';
 import { Settings } from './components/Settings';
+import { Chart } from './components/Chart';
+import { ProjectsTable } from './components/ProjectsTable';
+import { TasksTable } from './components/TasksTable';
 
 ExFModule({
 	styles: [
@@ -48,7 +51,10 @@ ExFModule({
 		TaskDetails,
 		Team,
 		Profile,
-		Settings
+		Settings,
+		Chart,
+		ProjectsTable,
+		TasksTable
 	],
 	bootstraps: [
 		App

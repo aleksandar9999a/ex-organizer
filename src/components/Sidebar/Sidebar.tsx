@@ -9,7 +9,7 @@ import './../../assets/logo.png';
 })
 export class Sidebar extends Component {
   @State()
-  isOpenSidebar: boolean = true;
+  isOpenSidebar: boolean = false;
   tabs: ITab[] = [
     {
       id: 'dashboar',

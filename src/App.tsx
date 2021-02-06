@@ -63,8 +63,7 @@ export class App extends Component {
 						},
 
 						'.app__container': {
-							padding: '1rem',
-							'min-height': '100%',
+							padding: '1rem'
 						}
 					}
 				}
