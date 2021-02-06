@@ -14,3 +14,25 @@ body {
   color: black;
   background: white;
 }
+
+.logo {
+  max-width: 200px;
+  height: 60px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.logo img {
+  object-fit: cover;
+  width: auto;
+  height: 100%;
+}
+
+.logo h1 {
+  position: absolute;
+  top: 1.25rem;
+  left: 60px;
+  font-size: 18px;
+}

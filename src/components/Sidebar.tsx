@@ -1,6 +1,6 @@
 import ExF, { Component, CustomElement, State } from 'exf-ts';
 import { isOpenSidebar, SidebarController } from '../controllers/SidebarCotroller';
-
+import './../assets/logo.png';
 
 @CustomElement({
   selector: 'exf-sidebar',
@@ -27,8 +27,25 @@ export class Sidebar extends Component {
             height: '100%',
             width: this.isOpenSidebar
               ? '220px'
-              : '50px',
-            transition: 'width .5s'
+              : '70px',
+            transition: 'width .5s',
+
+            '.logo': {
+              transition: 'padding .5s',
+              'padding-left': this.isOpenSidebar
+                ? '0.5rem'
+                : '0.75rem'
+            },
+
+            h1: {
+              transition: 'opacity .1s, right .3s',
+              opacity: this.isOpenSidebar
+                ? '1'
+                : '0',
+              left: this.isOpenSidebar
+                ? '60px'
+                : '-100px'
+            }
           }
         }
 
@@ -36,8 +53,8 @@ export class Sidebar extends Component {
           {
             '.sidebar': {
                 'width': this.isOpenSidebar
-                ? '200px'
-                : '0'
+                  ? '200px'
+                  : '0'
             }
           }
         }
@@ -48,7 +65,11 @@ export class Sidebar extends Component {
 	render() {
 		return (
       <div className="sidebar">
-        {this.isOpenSidebar ? 'template' : 'sidebar'}
+        <div className="logo">
+          <img src="src/assets/logo.png" alt=""/>
+
+          <h1>Ex-Organizer</h1>
+        </div>
       </div>
 		)
 	}
