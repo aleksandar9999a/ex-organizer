@@ -1,9 +1,53 @@
+import { IRoute } from 'exf-router/lib/interfaces/interfaces';
 import ExF, { Component, CustomElement } from 'exf-ts';
 
 @CustomElement({
 	selector: 'exf-app'
 })
 export class App extends Component {
+	routes: IRoute[] = [
+		{
+			component: 'exf-dashboard',
+			path: '/'
+		},
+		{
+			component: 'exf-projects',
+			path: '/projects'
+		},
+		{
+			component: 'exf-project-create',
+			path: '/project/create'
+		},
+		{
+			component: 'exf-project-details',
+			path: '/project/details/:id'
+		},
+		{
+			component: 'exf-tasks',
+			path: '/tasks'
+		},
+		{
+			component: 'exf-task-create',
+			path: '/task/create'
+		},
+		{
+			component: 'exf-task-details',
+			path: '/task/details/:id'
+		},
+		{
+			component: 'exf-team',
+			path: '/team'
+		},
+		{
+			component: 'exf-profile',
+			path: '/profile'
+		},
+		{
+			component: 'exf-settings',
+			path: '/settings'
+		}
+	]
+
 	stylize () {
 		return (
 			<style>
@@ -42,7 +86,7 @@ export class App extends Component {
 						<exf-breadcrumb />
 
 						<div className="app__container">
-							Template
+							<exf-router routes={this.routes} />
 						</div>
 					</div>
 				</div>

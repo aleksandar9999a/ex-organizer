@@ -29,7 +29,7 @@ export class Sidebar extends Component {
         },
         {
           id: 'projects_create',
-          pathname: '/projects/create',
+          pathname: '/project/create',
           title: 'Create Project'
         }
       ]
@@ -46,7 +46,7 @@ export class Sidebar extends Component {
         },
         {
           id: 'tasks_create',
-          pathname: '/tasks/create',
+          pathname: '/task/create',
           title: 'Create Task'
         }
       ]
