@@ -9,6 +9,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "@webcomponents/custom-elements": "^1.4.2",
     "@webcomponents/shadydom": "^1.7.4",
     "core-js": "^3.6.5",
