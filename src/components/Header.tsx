@@ -21,41 +21,45 @@ export class Header extends Component {
         <style>
           .navbar {
             {
-              background: '#00c292',
-          
-              ul: {
-                display: 'flex',
-                width: '100%',
-                'justify-content': 'space-between',
-                'list-style': 'none',
-                padding: '0',
-          
-                a: {
-                  color: '#fff',
-                  'text-decoration': 'none'
-                },
-          
-                li: {
-                  padding: '1rem',
-                  transition: 'background .2s'
-                },
-          
-                'li:hover': {
-                  background: 'rgba(0,0,0,.1)'
-                }
-              },
+              background: '#00926e',
+              display: 'flex',
+              width: '100%',
+              'justify-content': 'space-between',
+              padding: '0',
 
-              '.navbar__menu': {
-                background: 'transparent',
-                cursor: 'pointer',
-                
-                'div': {
-                  width: '15px',
-                  height: '1px',
-                  'background-color': '#fff',
-                  margin: '4px 0',
-                }
+              a: {
+                display: 'inline-block',
+                color: '#fff',
+                'text-decoration': 'none',
+                padding: '1rem',
+                transition: 'background .2s'
+              },
+              
+              'a:hover': {
+                background: 'rgba(0,0,0,.1)'
+              },
+            }
+          }
+
+          .menu {
+            {
+              background: 'transparent',
+              transition: 'background .2s',
+              padding: '1rem',
+              cursor: 'pointer',
+              
+              'div': {
+                width: '15px',
+                height: '1px',
+                'background-color': '#fff',
+                margin: '4px 0',
               }
+            }
+          }
+
+          .menu:hover {
+            {
+              background: 'rgba(0,0,0,.1)'
             }
           }
         </style>
@@ -66,24 +70,26 @@ export class Header extends Component {
 	render() {
 		return (
       <nav className="navbar">
-        <ul>
-          <li>
-            <button
-              className="navbar__menu"
-              onClick={this.openClose}
-            >
-              <div></div>
-              <div></div>
-              <div></div>
-            </button>
-          </li>
+        <div className="navbar__start">
+          <button
+            className="menu"
+            onClick={this.openClose}
+          >
+            <div></div>
+            <div></div>
+            <div></div>
+          </button>
+        </div>
 
-          <li>
-            <a href="#">
-              Log Out
-            </a>
-          </li>
-        </ul>
+        <div className="navbar__end">
+          <button className="btn">
+            <i className="fas fa-bell" />
+          </button>
+
+          <a href="#">
+            <i className="fas fa-sign-out-alt" />
+          </a>
+        </div>
       </nav>
 		)
 	}

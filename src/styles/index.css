@@ -64,3 +64,39 @@ body {
   content: "";
   transform: rotate(180deg);
 }
+
+.menu {
+  background: transparent;
+  transition: background .2s;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.menu div {
+  width: 15px;
+  height: 1px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+.menu:hover {
+  background: rgba(0, 0, 0, .1);
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1rem;
+  text-align: center;
+  background: transparent;
+  color: #fff;
+  transition: background .2s;
+}
+
+.btn:hover {
+  background: rgba(0,0,0,.1);
+}
+
+.btn.btn--rounded {
+  border-radius: 1.5rem;
+}
