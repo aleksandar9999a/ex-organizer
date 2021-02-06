@@ -69,7 +69,7 @@ export class SidebarTab extends Component {
             div: {
               padding: '1rem',
               background: 'transparent',
-              transition: 'border-width .05s, width .1s',
+              transition: 'border-width .05s, width .1s, transform .3s',
               display: 'flex',
               width: '100%',
               'border-left': '2px solid transparent',
@@ -97,6 +97,21 @@ export class SidebarTab extends Component {
               left: this.isOpenSidebar
                 ? '44px'
                 : '-200px'
+            }
+          }
+        }
+
+        @media screen and (max-width: 700px) {
+          {
+            li: {
+              div: {
+                transform: this.isOpenSidebar
+                  ? 'translateX(0)'
+                  : 'translateX(-200px)',
+                width: this.isOpenSidebar
+                  ? '100%'
+                  : '0'
+              }
             }
           }
         }

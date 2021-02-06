@@ -73,7 +73,7 @@ export class Sidebar extends Component {
 
   @State()
   activeTab: ITab = {
-    id: 'dashboar',
+    id: 'dashboard',
     title: 'Dashboard',
     pathname: '/'
   }

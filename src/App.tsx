@@ -19,8 +19,8 @@ export class App extends Component {
 						},
 
 						'.app__container': {
+							padding: '1rem',
 							'min-height': '100%',
-							background: '#eceef9'
 						}
 					}
 				}
@@ -38,6 +38,8 @@ export class App extends Component {
 
 					<div className="app__content">
 						<exf-header />
+
+						<exf-breadcrumb />
 
 						<div className="app__container">
 							Template

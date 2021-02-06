@@ -21,6 +21,7 @@ export class Header extends Component {
         <style>
           .navbar {
             {
+              'box-shadow': '0px 0px 16px 0px rgb(0 0 0 / 50%)',
               background: '#00926e',
               display: 'flex',
               width: '100%',

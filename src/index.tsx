@@ -10,6 +10,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { Footer } from './components/Footer';
 import { SidebarTab } from './components/Sidebar/SidebarTab';
 import { RouterModule } from 'exf-router';
+import { Breadcrumb } from './components/Breadcrumb';
 
 ExFModule({
 	styles: [
@@ -24,7 +25,8 @@ ExFModule({
 		Header,
 		Sidebar,
 		SidebarTab,
-		Footer
+		Footer,
+		Breadcrumb
 	],
 	bootstraps: [
 		App
