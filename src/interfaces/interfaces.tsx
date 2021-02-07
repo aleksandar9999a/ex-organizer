@@ -30,3 +30,9 @@ export interface IProject {
   priority: string,
   progress: number
 }
+
+export interface IBreadcrumbTab {
+  id: string | number,
+  title: string,
+  path: string
+}

@@ -12,7 +12,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { Footer } from './components/Footer';
 import { SidebarTab } from './components/Sidebar/SidebarTab';
 import { RouterModule } from 'exf-router';
-import { Breadcrumb } from './components/Breadcrumb';
+import { PageTitle } from './components/PageTitle';
 import { Dashboard } from './components/Dashboard';
 import { Projects } from './components/Projects';
 import { ProjectCreate } from './components/ProjectCreate';
@@ -41,7 +41,7 @@ ExFModule({
 		Sidebar,
 		SidebarTab,
 		Footer,
-		Breadcrumb,
+		PageTitle,
 		Dashboard,
 		Projects,
 		ProjectCreate,

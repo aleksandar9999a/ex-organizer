@@ -1,53 +1,19 @@
 import { IRoute } from 'exf-router/lib/interfaces/interfaces';
 import ExF, { Component, CustomElement } from 'exf-ts';
+import { RoutesController } from './controllers/Routes';
 
 @CustomElement({
-	selector: 'exf-app'
+	selector: 'exf-app',
+	dependencyInjection: true
 })
 export class App extends Component {
-	routes: IRoute[] = [
-		{
-			component: 'exf-dashboard',
-			path: '/'
-		},
-		{
-			component: 'exf-projects',
-			path: '/projects'
-		},
-		{
-			component: 'exf-project-create',
-			path: '/project/create'
-		},
-		{
-			component: 'exf-project-details',
-			path: '/project/details/:id'
-		},
-		{
-			component: 'exf-tasks',
-			path: '/tasks'
-		},
-		{
-			component: 'exf-task-create',
-			path: '/task/create'
-		},
-		{
-			component: 'exf-task-details',
-			path: '/task/details/:id'
-		},
-		{
-			component: 'exf-team',
-			path: '/team'
-		},
-		{
-			component: 'exf-profile',
-			path: '/profile'
-		},
-		{
-			component: 'exf-settings',
-			path: '/settings'
-		}
-	]
+	routes: IRoute[] = [];
 
+	constructor (private routesController: RoutesController) {
+		super();
+		this.routes = this.routesController.routes;
+	}
+	
 	stylize () {
 		return (
 			<style>
@@ -64,9 +30,23 @@ export class App extends Component {
 
 						'.app__container': {
 							padding: '1rem'
+						},
+
+						'.app__entry': {
+							display: 'flex'
 						}
 					}
 				}
+
+				@media screen and (max-width: 700px) {
+          {
+            '.app': {
+							'.app__entry': {
+								display: 'block'
+							}
+            }
+          }
+        }
 			</style>
 		)
 	}
@@ -82,7 +62,9 @@ export class App extends Component {
 					<div className="app__content">
 						<exf-header />
 
-						<exf-breadcrumb />
+						<div className="app__entry">
+							<exf-page-title />
+						</div>
 
 						<div className="app__container">
 							<exf-router routes={this.routes} />
