@@ -6,24 +6,14 @@ export interface ITab {
   pathname?: string
 }
 
-export interface ITask {
-  id: string | number,
-  title: string
-}
-
 export interface IUser {
   id: string | number,
   name: string
 }
 
-export interface IProject {
+export interface ITask {
   id: string | number,
-  title: string
-}
-
-export interface IProjectTableRow {
-  id: string | number,
-  task: ITask,
+  title: string,
   assign: IUser,
   created: string,
   until: string,
@@ -32,9 +22,9 @@ export interface IProjectTableRow {
   progress: number
 }
 
-export interface ITaskTableRow {
+export interface IProject {
   id: string | number,
-  project: IProject,
+  title: string,
   by: IUser,
   created: string,
   priority: string,

@@ -1,5 +1,5 @@
 import ExF, { Component, CustomElement, State } from 'exf-ts';
-import { IProjectTableRow } from './../interfaces/interfaces';
+import { IProject } from './../interfaces/interfaces';
 
 
 
@@ -9,69 +9,58 @@ import { IProjectTableRow } from './../interfaces/interfaces';
 })
 export class ProjectsTable extends Component {
   @State('state')
-  rows: IProjectTableRow[] = [
+  rows: IProject[] = [
     {
       id: 1,
-      task: {
-        id: 1,
-        title: 'Start'
-      },
-      assign: {
+      title:'Ex-Organizer',
+      by: {
         id: 1,
         name: 'Alexander'
       },
       created: 'jan 31 2021',
-      until: '-',
-      project: {
+      priority: 'high',
+      progress: 25
+    },
+    {
+      id: 5,
+      title: 'Ex-Organizer',
+      by: {
         id: 1,
-        title: 'Ex-Organizer'
+        name: 'Alexander'
       },
+      created: 'jan 31 2021',
       priority: 'high',
       progress: 25
     },
     {
       id: 2,
-      task: {
-        id: 1,
-        title: 'Start'
-      },
-      assign: {
+      title: 'Ex-Organizer',
+      by: {
         id: 1,
         name: 'Alexander'
       },
       created: 'jan 31 2021',
-      until: '-',
-      project: {
-        id: 1,
-        title: 'Ex-Organizer'
-      },
       priority: 'high',
       progress: 25
     },
     {
       id: 3,
-      task: {
-        id: 1,
-        title: 'Start'
-      },
-      assign: {
+      title: 'Ex-Organizer',
+      by: {
         id: 1,
         name: 'Alexander'
       },
       created: 'jan 31 2021',
-      until: '-',
-      project: {
-        id: 1,
-        title: 'Ex-Organizer'
-      },
       priority: 'high',
       progress: 25
     }
-  ];
+  ]
 
   render() {
     return (
       <div className="statistic-table">
+        <h2>Projects</h2>
+
         <table>
           <thead>
             <tr>
@@ -80,23 +69,15 @@ export class ProjectsTable extends Component {
               </th>
 
               <th>
-                Task
+                Project
               </th>
 
               <th>
-                Assign
+                By
               </th>
 
               <th>
                 Created
-              </th>
-
-              <th>
-                Until
-              </th>
-
-              <th>
-                Project
               </th>
 
               <th>
@@ -111,7 +92,7 @@ export class ProjectsTable extends Component {
 
           <tbody>
             {
-              this.rows.map(({id, task, assign, created, until, project, priority, progress }) => {
+              this.rows.map(({ id, title, by, created, priority, progress}) => {
                 return (
                   <tr id={id}>
                     <td>
@@ -119,25 +100,17 @@ export class ProjectsTable extends Component {
                     </td>
 
                     <td className="statistic-table__extended-cell">
-                      {task.title}
+                      {title}
                     </td>
 
                     <td className="statistic-table__extended-cell">
-                      {assign.name}
+                      {by.name}
                     </td>
 
                     <td className="statistic-table__extended-cell">
                       {created}
                     </td>
 
-                    <td className="statistic-table__extended-cell">
-                      {until}
-                    </td>
-
-                    <td className="statistic-table__extended-cell">
-                      {project.title}
-                    </td>
-                    
                     <td>
                       {priority}
                     </td>

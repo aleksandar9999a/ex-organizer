@@ -147,12 +147,17 @@ body {
 .statistic-table {
   box-shadow: 0px 0px 10px -8px rgb(0 0 0 / 100%);
   background: #fff;
-  padding: 0rem 0.5rem 0.5rem;
+  padding: 0.8rem 0.5rem 0.5rem;
   border-radius: 0.3rem;
   overflow: auto;
   max-width: 90vw;
   color: #5e7aa7;
   height: 300px;
+}
+
+.statistic-table h2 {
+  font-size: 1.3rem;
+  margin: 0 0.5rem 0.2rem;
 }
 
 .statistic-table table {
