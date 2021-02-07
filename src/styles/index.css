@@ -155,7 +155,15 @@ body {
   height: 300px;
 }
 
+.statistic-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
 .statistic-table h2 {
+  position: sticky;
+  top: 0;
   font-size: 1.3rem;
   margin: 0 0.5rem 0.2rem;
 }
