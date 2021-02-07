@@ -1,6 +1,7 @@
 import ExF, { Component, CustomElement, State } from 'exf-ts';
+import { Subscription } from 'rxjs';
+import { RoutesController } from '../../controllers/Routes';
 import { isOpenSidebar, SidebarController } from '../../controllers/SidebarCotroller';
-import { ITab } from '../../interfaces/interfaces';
 import './../../assets/logo.png';
 
 @CustomElement({
@@ -10,96 +11,24 @@ import './../../assets/logo.png';
 export class Sidebar extends Component {
   @State()
   isOpenSidebar: boolean = false;
-  tabs: ITab[] = [
-    {
-      id: 'dashboar',
-      title: 'Dashboard',
-      pathname: '/',
-      icon: 'fas fa-columns'
-    },
-    {
-      id: 'projects',
-      title: 'Projects',
-      icon: 'fas fa-calendar',
-      tabs: [
-        {
-          id: 'projects_search',
-          pathname: '/projects',
-          title: 'Search'
-        },
-        {
-          id: 'projects_create',
-          pathname: '/project/create',
-          title: 'Create Project'
-        }
-      ]
-    },
-    {
-      id: 'tasks',
-      icon: 'fas fa-tasks',
-      title: 'Tasks',
-      tabs: [
-        {
-          id: 'tasks_search',
-          pathname: '/tasks',
-          title: 'Search'
-        },
-        {
-          id: 'tasks_create',
-          pathname: '/task/create',
-          title: 'Create Task'
-        }
-      ]
-    },
-    {
-      id: 'team',
-      icon: 'fas fa-users',
-      pathname: '/team',
-      title: 'Team'
-    },
-    {
-      id: 'profile',
-      icon: 'fas fa-user',
-      pathname: '/profile',
-      title: 'Profile'
-    },
-    {
-      id: 'settings',
-      icon: 'fas fa-cog',
-      pathname: '/settings',
-      title: 'Settings'
-    }
-  ]
 
-  @State()
-  activeTab: ITab = {
-    id: 'dashboard',
-    title: 'Dashboard',
-    pathname: '/'
-  }
+  subscriber: Subscription;
 
-  constructor (private sidebarController: SidebarController) {
+  constructor (
+    private sidebarController: SidebarController,
+    private routesController: RoutesController
+  ) {
     super();
 
-    isOpenSidebar.subscribe(val => {
+    this.subscriber = isOpenSidebar.subscribe(val => {
       this.isOpenSidebar = val;
     })
   }
 
-  handleRoute (tab: ITab) {
-    if (!tab.pathname) {
-      return;
-    }
-
-    window.history.pushState(null, '', tab.pathname);
-    window.dispatchEvent(new Event('locationchange'));
-    this.activeTab = tab;
+  onDestroy () {
+    this.subscriber.unsubscribe();
   }
 
-  handleOutsideRouteChange = (tab: ITab) => {
-    this.activeTab = tab;
-  }
-  
   stylize () {
     return (
       <style>
@@ -163,16 +92,12 @@ export class Sidebar extends Component {
 
         <div className="sidebar__content">
           <ul>
-            {this.tabs.map(tab => {
+            {this.routesController.tabs.map(tab => {
               return (
-                <div onClick={() => this.handleRoute(tab)}>
-                  <exf-sidebar-tab
-                    id={tab.id}
-                    data={tab}
-                    isActive={this.activeTab.id === tab.id}
-                    onClick={(data: ITab) => this.handleOutsideRouteChange(data)}
-                  />
-                </div>
+                <exf-sidebar-tab
+                  id={tab.id}
+                  data={tab}
+                />
               )
             })}
           </ul>

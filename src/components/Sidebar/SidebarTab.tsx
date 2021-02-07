@@ -1,5 +1,7 @@
 import ExF, { Component, CustomElement, Prop, State } from 'exf-ts';
-import { isOpenSidebar, SidebarController } from '../../controllers/SidebarCotroller';
+import { Subscription } from 'rxjs';
+import { RoutesController } from '../../controllers/Routes';
+import { isOpenSidebar, openClose, SidebarController } from '../../controllers/SidebarCotroller';
 import { ITab } from '../../interfaces/interfaces';
 import './../../assets/logo.png';
 
@@ -21,131 +23,161 @@ export class SidebarTab extends Component {
     title: 'Test'
   }
 
-  @Prop()
-  isActive: boolean = false;
+  @State()
+  activeTab: ITab = {
+    id: 'dashboard',
+    title: 'Dashboard',
+    pathname: '/'
+  }
 
-  @Prop()
-  onClick?: (data: ITab) => void;
+  subscriber: Subscription;
+  routesSubscriber: Subscription;
 
-  constructor (private sidebarController: SidebarController) {
+  constructor (
+    private sidebarController: SidebarController,
+    private routesController: RoutesController
+  ) {
     super();
 
-    isOpenSidebar.subscribe(val => {
+    this.subscriber = isOpenSidebar.subscribe(val => {
       this.isOpenSidebar = val;
 
       if (!val) {
         this.isOpenTab = false;
       }
     })
+
+    this.routesSubscriber = this.routesController.currentTab.subscribe(tab => {
+      this.activeTab = tab;
+    })
   }
 
   handleRoute (pathname: string) {
-    window.history.pushState(null, '', pathname);
-    window.dispatchEvent(new Event('locationchange'));
+    this.routesController.pushRoute(pathname);
     this.isOpenTab = false;
+  }
 
-    if (this.onClick) {
-      this.onClick(this.data);
-    }
+  onDestroy () {
+    this.subscriber.unsubscribe();
+    this.routesSubscriber.unsubscribe();
   }
 
   handleClick = () => {
     if (!this.data.tabs) {
+      if (this.data.pathname) {
+        this.routesController.pushRoute(this.data.pathname);
+      }
+
       return;
     }
 
-    this.isOpenTab = !this.isOpenTab
+    this.isOpenTab = !this.isOpenTab;
+
+    if (this.isOpenTab && !this.isOpenSidebar) {
+      openClose();
+    }
   }
 
   stylize () {
     return (
-      <style>
-        li {
-          {
-            color: '#fff',
-            cursor: 'pointer',
-            'font-size': '14px',
-            
-            div: {
-              padding: '1rem',
-              background: 'transparent',
-              transition: 'border-width .05s, width .1s, transform .3s',
-              display: 'flex',
-              width: '100%',
-              'border-left': '2px solid transparent',
-              'align-items': 'center',
-              'justify-content': 'space-between'
-            },
-
-            'div:hover': {
-              'border-left': '2px solid #45aaf2'
-            },
-
-            i: {
-              transition: 'margin .3s',
-              'margin-left': this.isOpenSidebar
-                ? '0'
-                : '0.5rem'
-            },
-
-            span: {
-              position: 'absolute',
-              transition: 'left .3s, opacity .2s',
-              opacity: this.isOpenSidebar
-                ? '1'
-                : '0',
-              left: this.isOpenSidebar
-                ? '44px'
-                : '-200px'
-            }
-          }
-        }
-
-        @media screen and (max-width: 700px) {
-          {
-            li: {
+      <styles>
+        <style>
+          li {
+            {
+              color: '#fff',
+              cursor: 'pointer',
+              'font-size': '14px',
+              
               div: {
-                transform: this.isOpenSidebar
-                  ? 'translateX(0)'
-                  : 'translateX(-200px)',
-                width: this.isOpenSidebar
-                  ? '100%'
-                  : '0'
+                padding: '1rem',
+                background: 'transparent',
+                transition: 'border-width .05s, width .1s, transform .3s',
+                display: 'flex',
+                width: '100%',
+                'border-left': '2px solid transparent',
+                'align-items': 'center',
+                'justify-content': 'space-between'
+              },
+
+              'div:hover': {
+                'border-left': '2px solid #45aaf2'
+              },
+
+              i: {
+                transition: 'margin .3s',
+                'margin-left': this.isOpenSidebar
+                  ? '0'
+                  : '0.5rem'
+              },
+
+              span: {
+                position: 'absolute',
+                transition: 'left .3s, opacity .2s',
+                opacity: this.isOpenSidebar
+                  ? '1'
+                  : '0',
+                left: this.isOpenSidebar
+                  ? '44px'
+                  : '-200px'
               }
             }
           }
-        }
+        </style>
 
-        .active {
-          {
-            'border-left': '2px solid #00b6b6'
-          }
-        }
-
-        ul {
-          {
-            'list-style': 'none',
-            
-            li: {
-              transition: 'opacity .5s, padding .3s, height .3s, width .1s, border-width .05s, background .3s',
-              background: 'transparent',
-              height: this.isOpenTab
-                ? 'auto'
-                : '0',
-              padding: this.isOpenTab
-                ? '1rem 1.5rem'
-                : '0 1.5rem',
-              opacity: this.isOpenTab
-                ? '1'
-                : '0'
-            },
-
-            'li:hover': {
-              'border-left': '2px solid #fc7303'
+        <style>
+          @media screen and (max-width: 700px) {
+            {
+              li: {
+                div: {
+                  transform: this.isOpenSidebar
+                    ? 'translateX(0)'
+                    : 'translateX(-200px)',
+                  width: this.isOpenSidebar
+                    ? '100%'
+                    : '0'
+                }
+              }
             }
           }
-        }
-      </style>
+        </style>
+
+        <style>
+          .active {
+            {
+              'border-left': '2px solid #00b6b6'
+            }
+          }
+        </style>
+
+        <style>
+          ul {
+            {
+              'list-style': 'none',
+
+              li: {
+                transition: 'opacity .5s, padding .3s, height .3s, width .1s, border-width .05s, background .3s',
+                background: 'transparent',
+                'pointer-events': this.isOpenSidebar
+                  ? 'auto'
+                  : 'none',
+                height: this.isOpenTab
+                  ? 'auto'
+                  : '0',
+                padding: this.isOpenTab
+                  ? '1rem 1.5rem'
+                  : '0 1.5rem',
+                opacity: this.isOpenTab
+                  ? '1'
+                  : '0'
+              },
+
+              'li:hover': {
+                'border-left': '2px solid #fc7303'
+              }
+            }
+          }
+        </style>
+      </styles>
     )
   }
 
@@ -154,7 +186,7 @@ export class SidebarTab extends Component {
       ? 'arrow-down arrow--up'
       : 'arrow-down'
 
-    const activeClass = this.isActive
+    const activeClass = (this.activeTab || {}).id === this.data.id
       ? 'active'
       : ''
 
