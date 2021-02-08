@@ -27,10 +27,11 @@ import { Chart } from './components/Chart';
 import { ProjectsTable } from './components/ProjectsTable';
 import { TasksTable } from './components/TasksTable';
 
+
 ExFModule({
 	styles: [
-		'@import "src/styles/index.css"',
-		'@import "src/assets/fontawesome-free/css/all.min.css"',
+		'@import "/src/styles/index.css"',
+		'@import "/src/assets/fontawesome-free/css/all.min.css"',
 	],
 	modules: [
 		RouterModule

@@ -85,7 +85,7 @@ export class Sidebar extends Component {
 		return (
       <div className="sidebar">
         <div className="logo">
-          <img src="src/assets/logo.png" alt=""/>
+          <img src="/src/assets/logo.png" alt=""/>
 
           <h1>Ex-Organizer</h1>
         </div>

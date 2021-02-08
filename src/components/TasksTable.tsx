@@ -1,4 +1,5 @@
 import ExF, { Component, CustomElement, State } from 'exf-ts';
+import { RoutesController } from '../controllers/Routes';
 import { ITask } from '../interfaces/interfaces';
 
 const demoProject = {
@@ -61,6 +62,12 @@ export class TasksTable extends Component {
     }
   ];
 
+  constructor (
+    private routesController: RoutesController
+  ) {
+    super();
+  }
+
 	render() {
 		return (
       <div className="statistic-table">
@@ -107,7 +114,7 @@ export class TasksTable extends Component {
             {
               this.rows.map(({id, title, assign, created, until, project, priority, progress }) => {
                 return (
-                  <tr id={id}>
+                  <tr id={id} onClick={() => this.routesController.pushRoute(`/task/details/${id}`)}>
                     <td>
                       {id}
                     </td>
