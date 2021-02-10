@@ -30,10 +30,6 @@ export class App extends Component {
 
 						'.app__container': {
 							padding: '1rem'
-						},
-
-						'.app__entry': {
-							display: 'flex'
 						}
 					}
 				}
@@ -41,12 +37,8 @@ export class App extends Component {
 				@media screen and (max-width: 700px) {
           {
             '.app': {
-							'.app__entry': {
-								display: 'block'
-							},
-
 							'.app__container': {
-								padding: '0 1rem'
+								padding: '1rem'
 							}
             }
           }
@@ -66,9 +58,7 @@ export class App extends Component {
 					<div className="app__content">
 						<exf-header />
 
-						<div className="app__entry">
-							<exf-page-title />
-						</div>
+						<exf-page-title />
 
 						<div className="app__container">
 							<exf-router routes={this.routes} />

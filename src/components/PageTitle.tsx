@@ -37,19 +37,8 @@ export class PageTitle extends Component {
             margin: '1rem 1rem 0rem',
             padding: '1rem',
             background: '#fff',
-            display: 'flex',
             'border-radius': '0.3rem',
-            width: '350px',
             transition: 'width .3s, margin .3s'
-          }
-        }
-
-        @media screen and (max-width: 700px) {
-          {
-            '.page-title': {
-              width: 'auto',
-              margin: '1rem',
-            }
           }
         }
       </style>
