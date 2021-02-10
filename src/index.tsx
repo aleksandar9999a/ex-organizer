@@ -22,7 +22,6 @@ import { ProjectDetails } from './components/ProjectDetails';
 import { TaskDetails } from './components/TaskDetails';
 import { Team } from './components/Team';
 import { Profile } from './components/Profile';
-import { Settings } from './components/Settings';
 import { Chart } from './components/Chart';
 import { ProjectsTable } from './components/ProjectsTable';
 import { TasksTable } from './components/TasksTable';
@@ -52,7 +51,6 @@ ExFModule({
 		TaskDetails,
 		Team,
 		Profile,
-		Settings,
 		Chart,
 		ProjectsTable,
 		TasksTable

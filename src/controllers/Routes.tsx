@@ -66,12 +66,6 @@ export class RoutesController {
         icon: 'fas fa-user',
         pathname: '/profile',
         title: 'Profile'
-      },
-      {
-        id: 'settings',
-        icon: 'fas fa-cog',
-        pathname: '/settings',
-        title: 'Settings'
       }
     ]
 
@@ -120,11 +114,6 @@ export class RoutesController {
         title: 'Profile',
         component: 'exf-profile',
         path: '/profile'
-      },
-      {
-        title: 'Settings',
-        component: 'exf-settings',
-        path: '/settings'
       }
     ];
 
