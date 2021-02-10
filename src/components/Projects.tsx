@@ -9,7 +9,7 @@ export class Projects extends Component {
 	render() {
 		return (
       <div>
-        projects
+        <exf-projects-table />
       </div>
 		)
 	}

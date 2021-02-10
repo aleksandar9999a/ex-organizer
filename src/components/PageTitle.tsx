@@ -34,11 +34,11 @@ export class PageTitle extends Component {
             'box-shadow': '0px 0px 20px -10px rgba(0,0,0,0.5)',
             color: '#5e7aa7',
             'font-size': '1.2rem',
-            margin: '1rem 1.5rem 0rem',
+            margin: '1rem 1rem 0rem',
             padding: '1rem',
             background: '#fff',
             display: 'flex',
-            'border-radius': '2rem',
+            'border-radius': '0.3rem',
             width: '350px',
             transition: 'width .3s, margin .3s'
           }

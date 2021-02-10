@@ -43,6 +43,10 @@ export class App extends Component {
             '.app': {
 							'.app__entry': {
 								display: 'block'
+							},
+
+							'.app__container': {
+								padding: '0 1rem'
 							}
             }
           }

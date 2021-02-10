@@ -19,8 +19,16 @@ export class Dashboard extends Component {
 
             '.dashboard__entity': {
               transition: 'width .3s',
-              flex: '0 0 calc(50% - 1rem)',
-              margin: '0.5rem'
+              flex: '0 0 calc(50% - 0.5rem)',
+              margin: '0 0.5rem'
+            },
+
+            '.dashboard__entity:first-child': {
+              'margin-left': 0
+            },
+
+            '.dashboard__entity:last-child': {
+              'margin-right': 0
             }
           }
         }
@@ -29,8 +37,8 @@ export class Dashboard extends Component {
           {
             '.dashboard': {
               '.dashboard__entity': {
-              flex: '0 0 100%',
-              margin: '0.5rem 0'
+                flex: '0 0 100%',
+                margin: '0 0 1rem'
               }
             }
           }

@@ -12,20 +12,19 @@ export class ProjectCreate extends Component {
         <style>
           .project {
             {
-              padding: '0 0.5rem 0.5rem',
               display: 'flex',
               'flex-wrap': 'wrap',
 
               '.project__main': {
-                flex: '0 0 calc(35% - 2rem)',
-                'margin-right': '2rem',
-                'margin-bottom': '2rem',
+                flex: '0 0 calc(35% - 1rem)',
+                'margin-right': '1rem',
+                'margin-bottom': '1rem',
                 'min-height': '400px'
               },
 
               '.project__details': {
                 flex: '0 0 65%',
-                'margin-bottom': '2rem',
+                'margin-bottom': '1rem',
                 'min-height': '400px'
               }
             }

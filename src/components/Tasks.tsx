@@ -9,7 +9,7 @@ export class Tasks extends Component {
 	render() {
 		return (
       <div>
-        tasks
+        <exf-tasks-table />
       </div>
 		)
 	}
