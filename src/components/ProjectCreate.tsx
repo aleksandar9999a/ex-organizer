@@ -1,4 +1,4 @@
-import ExF, { Component, CustomElement } from 'exf-ts';
+import ExF, { Component, CustomElement, State } from 'exf-ts';
 
 
 @CustomElement({
@@ -6,6 +6,20 @@ import ExF, { Component, CustomElement } from 'exf-ts';
   dependencyInjection: true
 })
 export class ProjectCreate extends Component {
+  @State('state')
+  title: string = '';
+
+  @State('state')
+  description: string = '';
+
+  handleTitle = (e: any) => {
+    this.title = e.target.value
+  }
+
+  handleDesc = (e: any) => {
+    this.description = e.target.value
+  }
+
   stylize () {
     return (
       <styles>
@@ -55,6 +69,34 @@ export class ProjectCreate extends Component {
         <div className="project__main">
           <div className="card">
             <h3>Main</h3>
+
+            <div className="card__body">
+              <div className="field-group">
+                <input
+                  id="title"
+                  type="text"
+                  value={this.title}
+                  onChange={this.handleTitle}
+                />
+
+                <label htmlFor="title" className={this.title ? 'field-group--not-empty': ''}>
+                  Title
+                </label>
+              </div>
+
+              <div className="field-group h-medium">
+                <textarea
+                  id="description"
+                  type="text"
+                  value={this.description}
+                  onChange={this.handleDesc}
+                />
+
+                <label htmlFor="description" className={this.description ? 'field-group--not-empty': ''}>
+                  Description
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
